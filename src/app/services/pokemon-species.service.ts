@@ -10,9 +10,7 @@ export class PokemonSpeciesService {
 
   async get(id: number) {
     try {
-      let res: any = await this.http
-        .get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
-        .toPromise();
+      let res: any = await this.http.get(`/pokemon-species/${id}/`).toPromise();
       this.currentPokemonSpecies = res;
       console.log(this.currentPokemonSpecies);
     } catch (e) {
