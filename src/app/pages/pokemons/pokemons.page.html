@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pokemons</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item
+      *ngFor="let pokemon of pokemons"
+      [routerLink]="['/pokemons', pokemon.id]"
+    >
+      <ion-label> {{ pokemon.name | titlecase }} </ion-label>
+      <ion-badge slot="end"> {{ pokemon.id }} </ion-badge>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold="15%" (ionInfinite)="getNext($event)">
+    <ion-infinite-scroll-content loadingText="Loading more pokemons">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
