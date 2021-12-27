@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="{{ !loading && type.name || 'danger' }}">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="types"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!loading">{{ type.name | titlecase }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!loading">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-text
+          >{{ type.generation.name.replace('-', ' ') | titlecase }}</ion-text
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
