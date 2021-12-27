@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonSpeciesService } from 'src/app/services/pokemon-species.service';
 import { PokemonsService } from 'src/app/services/pokemons.service';
+import { TypesService } from 'src/app/services/types.service';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -18,8 +19,11 @@ export class PokemonDetailPage implements OnInit {
   pokemon: any;
   pokemonSpecies: any;
   loading: boolean = true;
+  loadingImg: boolean = true;
 
   async ngOnInit() {
+    this.loading = true;
+
     this.id = Number(this.activatedRoute.snapshot.paramMap.getAll('id')[0]);
     await this.pokemonsService.get(this.id);
     this.pokemon = this.pokemonsService.currentPokemon;
@@ -33,5 +37,10 @@ export class PokemonDetailPage implements OnInit {
 
   imgLoad() {
     console.log('Image Loaded!');
+    this.loadingImg = false;
+  }
+
+  parseTypeId(type: any) {
+    return type.url.split('/').at(-2);
   }
 }

@@ -1,5 +1,19 @@
 ion-img {
-  max-width: 475px;
   margin-left: auto;
   margin-right: auto;
+
+}
+
+div {
+  width: 475px;
+  height: 475px;
+  max-width: 100vw;
+  max-height: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-spinner {
+  margin: auto;
+  margin-top: 50%;
 }

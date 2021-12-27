@@ -8,15 +8,22 @@
 </ion-header>
 
 <ion-content *ngIf="!loading">
-  <ion-img
-    [src]="pokemon.sprites.other['official-artwork'].front_default"
-    (ionImgDidLoad)="imgLoad()"
-  ></ion-img>
+  <div class="ion-text-center">
+    <ion-img
+      [src]="pokemon.sprites.other['official-artwork'].front_default"
+      (ionImgDidLoad)="imgLoad()"
+    ></ion-img>
+    <ion-spinner *ngIf="loadingImg" color="danger"></ion-spinner>
+  </div>
 
   <ion-grid>
     <ion-row class="ion-text-center">
       <ion-col *ngFor="let type of pokemon.types">
-        <ion-button color="{{ type.type.name }}" expand="block">
+        <ion-button
+          color="{{ type.type.name }}"
+          expand="block"
+          [routerLink]="['/types', parseTypeId(type.type)]"
+        >
           {{ type.type.name | uppercase }}
         </ion-button>
       </ion-col>
