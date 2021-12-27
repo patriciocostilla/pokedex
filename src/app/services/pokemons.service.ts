@@ -23,14 +23,12 @@ export class PokemonsService {
 
   async getAll() {
     try {
-      let res: any = await this.http
-        .get('https://pokeapi.co/api/v2/pokemon/')
-        .toPromise();
+      let res: any = await this.http.get('/pokemon/').toPromise();
       this.pokemons = this.parseId(res.results);
       this.count = res.count;
       this.next = res.next;
       this.previous = res.previous;
-      console.log(res);
+      console.log(this.pokemons);
     } catch (e) {
       console.log(e);
     }
@@ -51,9 +49,7 @@ export class PokemonsService {
 
   async get(id: number) {
     try {
-      let res: any = await this.http
-        .get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-        .toPromise();
+      let res: any = await this.http.get(`/pokemon/${id}/`).toPromise();
       this.currentPokemon = res;
       console.log(this.currentPokemon);
     } catch (e) {
