@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IdParserService } from 'src/app/services/id-parser.service';
 import { PokemonSpeciesService } from 'src/app/services/pokemon-species.service';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 import { TypesService } from 'src/app/services/types.service';
@@ -13,7 +14,8 @@ export class PokemonDetailPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private pokemonsService: PokemonsService,
-    private pokemonSpeciesService: PokemonSpeciesService
+    private pokemonSpeciesService: PokemonSpeciesService,
+    private idParser: IdParserService
   ) {}
   id: number;
   pokemon: any;
@@ -42,5 +44,9 @@ export class PokemonDetailPage implements OnInit {
 
   parseTypeId(type: any) {
     return type.url.split('/').at(-2);
+  }
+
+  getId(url: any) {
+    return this.idParser.getId(url);
   }
 }

@@ -48,7 +48,10 @@
   </ion-grid>
   <ion-list>
     <ion-list-header> Abilities </ion-list-header>
-    <ion-item *ngFor="let ability of pokemon.abilities">
+    <ion-item
+      *ngFor="let ability of pokemon.abilities"
+      [routerLink]="['/abilities', getId(ability.ability.url)]"
+    >
       <ion-label>{{ ability.ability.name | titlecase}}</ion-label>
     </ion-item>
   </ion-list>

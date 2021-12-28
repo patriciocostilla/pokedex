@@ -6,8 +6,15 @@ import { AbilitiesPage } from './abilities.page';
 const routes: Routes = [
   {
     path: '',
-    component: AbilitiesPage
-  }
+    component: AbilitiesPage,
+  },
+  {
+    path: ':id',
+    loadChildren: () =>
+      import('./ability-detail/ability-detail.module').then(
+        (m) => m.AbilityDetailPageModule
+      ),
+  },
 ];
 
 @NgModule({
