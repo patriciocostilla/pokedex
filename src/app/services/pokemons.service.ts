@@ -51,7 +51,7 @@ export class PokemonsService {
     try {
       let res: any = await this.http.get(`/pokemon/${id}/`).toPromise();
       this.currentPokemon = res;
-      console.log(this.currentPokemon);
+      console.log(res);
     } catch (e) {
       console.log(e);
     }
