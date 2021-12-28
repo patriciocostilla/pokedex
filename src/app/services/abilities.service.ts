@@ -13,10 +13,17 @@ export class AbilitiesService {
 
   currentAbility: any;
 
+  parseId(abilities: any[]) {
+    return abilities.map((ability: any) => {
+      ability.id = ability.url.split('/').at(-2);
+      return ability;
+    });
+  }
+
   async getAll() {
     try {
       let res: any = await this.http.get('/ability/').toPromise();
-      this.abilities = res.results;
+      this.abilities = this.parseId(res.results);
       this.count = res.count;
       this.next = res.next;
       this.previous = res.previous;
@@ -29,8 +36,8 @@ export class AbilitiesService {
   async getNext() {
     try {
       let res: any = await this.http.get(this.next).toPromise();
-      this.abilities.push(...res.results);
-      this.count = this.count + res.count;
+      this.abilities.push(...this.parseId(res.results));
+      this.count = res.count;
       this.next = res.next;
       this.previous = res.previous;
       console.log(res);
