@@ -28,7 +28,7 @@ export class PokemonsService {
       this.count = res.count;
       this.next = res.next;
       this.previous = res.previous;
-      console.log(this.pokemons);
+      console.log(res);
     } catch (e) {
       console.log(e);
     }
