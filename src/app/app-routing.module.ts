@@ -19,6 +19,11 @@ const routes: Routes = [
         (m) => m.PokemonsPageModule
       ),
   },
+  {
+    path: 'types',
+    loadChildren: () =>
+      import('./pages/types/types.module').then((m) => m.TypesPageModule),
+  },
 ];
 
 @NgModule({
