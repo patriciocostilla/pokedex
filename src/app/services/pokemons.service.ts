@@ -8,7 +8,7 @@ export class PokemonsService {
   constructor(private http: HttpClient) {}
 
   pokemons: any[];
-  count: number;
+  count: number = 0;
   next: string;
   previous: string;
 
