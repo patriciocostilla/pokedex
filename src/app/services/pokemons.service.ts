@@ -38,7 +38,7 @@ export class PokemonsService {
     try {
       let res: any = await this.http.get(this.next).toPromise();
       this.pokemons.push(...this.parseId(res.results));
-      this.count = this.count + res.count;
+      this.count = res.count;
       this.next = res.next;
       this.previous = res.previous;
       console.log(res);
