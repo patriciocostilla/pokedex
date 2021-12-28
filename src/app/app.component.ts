@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   public appPages = [
     { title: 'Pokemons', url: '/pokemons', icon: 'mail' },
     { title: 'Types', url: '/types', icon: 'paper-plane' },
+    { title: 'Abilities', url: '/abilities', icon: 'paper-plane' },
   ];
   @ViewChild(IonRouterOutlet, { static: true }) routerOutlet: IonRouterOutlet;
   constructor(
